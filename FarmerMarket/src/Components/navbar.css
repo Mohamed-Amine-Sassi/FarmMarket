@@ -1,0 +1,285 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main navigation container */
+.nav {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 20px; /* Increase padding for vertical layout */
+}
+
+/* Inner container - Always horizontal */
+.nav .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items vertically */
+  flex-direction: column; /* Stack items vertically */
+  padding: 20px 0;
+  position: relative;
+  gap: 15px; /* Add vertical spacing between items */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  /* Add consistent spacing */
+}
+
+/* Navigation buttons */
+.btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 15px 30px; /* Increase padding for better vertical appearance */
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px; /* Slightly larger font */
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 200px; /* Fixed width for consistency */
+  text-align: center; /* Center text */
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Links styling */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Elegant Select Wrapper */
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Custom Select Styling */
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 15px 45px 15px 20px; /* Increase padding */
+  font-size: 16px; /* Larger font */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  outline: none;
+  width: 200px; /* Fixed width to match buttons */
+  text-align: center; /* Center text */
+  position: relative;
+}
+
+/* Placeholder styling */
+.select-wrapper select option[value=""] {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+/* Custom Arrow */
+.select-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+
+/* Select hover effects */
+.select-wrapper:hover select {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.select-wrapper:hover .select-arrow {
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Select focus state */
+.select-wrapper select:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.select-wrapper select:focus + .select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+  color: white;
+}
+
+/* Dropdown options styling */
+.select-wrapper select option {
+  background: #667eea;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  font-weight: 500;
+}
+
+.select-wrapper select option:hover {
+  background: #764ba2;
+}
+
+.select-wrapper select option:checked {
+  background: #764ba2;
+  font-weight: 600;
+}
+
+/* SVG outline styling */
+.outline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.rect {
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 2;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: drawBorder 3s ease-in-out infinite alternate;
+}
+
+@keyframes drawBorder {
+  0% {
+    stroke-dashoffset: 400;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Responsive design - Keep horizontal layout */
+@media (max-width: 768px) {
+  .nav {
+    padding: 15px;
+  }
+
+  .nav .container {
+    padding: 15px 0;
+    gap: 12px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 180px; /* Smaller width on mobile */
+  }
+
+  .select-wrapper select {
+    padding: 12px 40px 12px 15px;
+    font-size: 14px;
+    width: 180px; /* Match button width */
+  }
+
+  .select-arrow {
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    padding: 10px;
+  }
+
+  .nav .container {
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+    width: 160px; /* Even smaller on very small screens */
+  }
+
+  .select-wrapper select {
+    padding: 10px 35px 10px 12px;
+    font-size: 13px;
+    width: 160px;
+  }
+
+  .select-arrow {
+    right: 8px;
+  }
+}
+
+/* Additional hover effects */
+.nav .container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.05) 50%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.nav:hover .container::before {
+  opacity: 1;
+}
+
+/* Focus states for accessibility */
+.btn:focus,
+.select-wrapper select:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}
