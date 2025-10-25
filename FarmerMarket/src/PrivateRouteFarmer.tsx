@@ -8,7 +8,7 @@ export default function PrivateRouteFaramer() {
   const [auth, setAuth] = useState<null | boolean>(null);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/farmerDashbord", {
+      .get(`${import.meta.env.VITE_API_URL}/api/farmerDashbord`, {
         withCredentials: true,
       })
       .then(() => setAuth(true))

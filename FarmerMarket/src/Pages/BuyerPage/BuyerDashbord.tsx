@@ -24,7 +24,9 @@ export default function BuyerDashboard() {
     const getData = async () => {
       try {
         setLoading(true);
-        const response = await axios.get("http://localhost:3001/api/getItem");
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/api/getItem`
+        );
         setData(response.data);
       } catch (err) {
         console.log(err);
@@ -38,7 +40,7 @@ export default function BuyerDashboard() {
   const handleClick = async (ownerID: string) => {
     try {
       const owner = await axios.get(
-        `http://localhost:3001/api/ownerInfo/${ownerID}`,
+        `${import.meta.env.VITE_API_URL}/api/ownerInfo/${ownerID}`,
         {
           withCredentials: true,
         }

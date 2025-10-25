@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+  "lucide-react": "^0.460.0",
     "@tailwindcss/vite": "^4.1.11",
     "axios": "^1.10.0",
     "Buffer": "^0.0.0",
