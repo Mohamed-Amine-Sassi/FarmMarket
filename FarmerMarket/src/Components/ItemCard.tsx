@@ -45,7 +45,7 @@ export default function ItemCard({
   const handleDeleteItem = async (id: string) => {
     try {
       const response = await axios.delete(
-        "http://localhost:3001/api/deleteItem",
+        `${import.meta.env.VITE_API_URL}/api/deleteItem`,
         {
           withCredentials: true,
           data: { id },
@@ -71,9 +71,13 @@ export default function ItemCard({
     if (file) {
       formData.append("image", file);
     }
-    await axios.patch("http://localhost:3001/api/editItem", formData, {
-      withCredentials: true,
-    });
+    await axios.patch(
+      `${import.meta.env.VITE_API_URL}/api/editItem`,
+      formData,
+      {
+        withCredentials: true,
+      }
+    );
     setEdit(false);
   };
 

@@ -11,7 +11,7 @@ export default function PrivateRouteBuyer() {
   const [auth, setAuth] = useState<null | boolean>(null);
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/buyerDashbord", {
+      .get(`${import.meta.env.VITE_API_URL}/api/buyerDashbord`, {
         withCredentials: true,
       })
       .then(() => setAuth(true))

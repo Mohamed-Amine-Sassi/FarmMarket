@@ -27,7 +27,7 @@ export default function FarmerDashbord() {
     } else {
       console.log("No file selected");
     }
-    await axios.post("http://localhost:3001/api/addItem", formData, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/api/addItem`, formData, {
       withCredentials: true,
     });
   };
@@ -38,7 +38,7 @@ export default function FarmerDashbord() {
     const getData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/api/getFarmersItems",
+          `${import.meta.env.VITE_API_URL}/api/getFarmersItems`,
           {
             withCredentials: true,
           }

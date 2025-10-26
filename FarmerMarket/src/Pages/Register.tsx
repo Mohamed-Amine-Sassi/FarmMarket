@@ -19,16 +19,19 @@ export default function Register() {
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/api/register", {
-        firstName,
-        lastName,
-        username,
-        password,
-        birthday,
-        role,
-        phoneNumber,
-        email,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        {
+          firstName,
+          lastName,
+          username,
+          password,
+          birthday,
+          role,
+          phoneNumber,
+          email,
+        }
+      );
       console.log("data sent succesfuly", response.data);
     } catch (err) {
       if (axios.isAxiosError(err)) {

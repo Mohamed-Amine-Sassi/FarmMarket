@@ -19,7 +19,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost:27017/farmersMarketSesssion",
+      mongoUrl: "mongodb://mongo:27017/farmersMarketSesssion",
     }),
     cookie: {
       secure: false,
@@ -37,7 +37,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-mongoose.connect("mongodb://localhost:27017/MarketApp");
+mongoose.connect("mongodb://mongo:27017/MarketApp");
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
